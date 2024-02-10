@@ -1,0 +1,14 @@
+DatabaseHandler/__pycache__
+Auth/__pycache__
+DocumentHandler/__pycache__
+
+LLM/__pycache__
+Ocr/__pycache__
+Models/__pycache__
+env
+.venv
+test.ipynb
+local.db
+test.ipynb
+certs
+logfile.log

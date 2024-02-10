@@ -1,0 +1,10 @@
+[Unit]
+Description=startup script
+
+[Service]
+ExecStart=/home/app/hackathon/startup.sh
+WorkingDirectory=/home/app/hackathon/
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
