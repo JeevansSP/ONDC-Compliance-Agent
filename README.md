@@ -1,4 +1,4 @@
-# Legal Document Processing Project 📑
+# Guidelines and Compliance conversational chatbot 📑
 
 Welcome to the Legal Document Processing Project! This project leverages various technologies to ingest, process, and analyze legal and regulatory PDF documents. Below you'll find information about the project's tech stack, functionalities, and how to get started.
 
