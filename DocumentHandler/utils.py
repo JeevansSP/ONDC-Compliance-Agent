@@ -249,3 +249,13 @@ def get_pdf_document(filepath: str):
     
     # Return the PDF file as a response
     return FileResponse(filepath, media_type="application/pdf")
+
+def update_user_points(user_id, points):
+    query = f"UPDATE {user_table} SET user_points = user_points + {points} WHERE user_id = '{user_id}'"
+    try: 
+        executeNonSelectQuery(query)
+        return {"message": "User points updated successfully"}
+    except Exception as excep:
+        print(excep)
+        return {"error": "Failed to update user points"}
+    
