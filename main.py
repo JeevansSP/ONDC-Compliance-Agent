@@ -56,6 +56,12 @@ async def update_points(access_token: str = Depends(oauth2_scheme), points: int 
         return update_user_points(access_token, points)
     return {"message": "false"}
 
+@app.post('/user/ranking')
+async def get_ranking(access_token: str = Depends(oauth2_scheme)):
+    if verify_access_token(access_token):
+        return get_user_ranking()
+    return {"message": "false"}
+
 @app.get("/callback")
 async def auth_google(request: Request):
 
