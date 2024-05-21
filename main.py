@@ -51,9 +51,14 @@ async def get_token(access_token: str = Depends(oauth2_scheme)):
     return {"message": "false"}
 
 @app.post("/user/points")
-async def update_points(access_token: str = Depends(oauth2_scheme), points: int = Form(...)):
+async def update_points(access_token: str = Depends(oauth2_scheme), event: str = Form(...)):
     if verify_access_token(access_token):
-        return update_user_points(access_token, points)
+        if event == "UPLOAD":
+            return update_user_points(access_token, points=10)
+        elif event == "VERIFY":
+            return update_user_points(access_token, points=1)
+        else:
+            return {"message":"Specify it's UPLOAD or VERIFY event."}
     return {"message": "false"}
 
 @app.post('/user/ranking')
