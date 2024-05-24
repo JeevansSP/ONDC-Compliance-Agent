@@ -50,6 +50,22 @@ async def get_token(access_token: str = Depends(oauth2_scheme)):
         return get_user_info(access_token)
     return {"message": "false"}
 
+@app.post("/user/points")
+async def update_points(access_token: str = Depends(oauth2_scheme), event: str = Form(...)):
+    if verify_access_token(access_token):
+        if event == "UPLOAD":
+            return update_user_points(access_token, points=10)
+        elif event == "VERIFY":
+            return update_user_points(access_token, points=1)
+        else:
+            return {"message":"Specify it's UPLOAD or VERIFY event."}
+    return {"message": "false"}
+
+@app.post('/user/ranking')
+async def get_ranking(access_token: str = Depends(oauth2_scheme)):
+    if verify_access_token(access_token):
+        return get_user_ranking()
+    return {"message": "false"}
 
 @app.get("/callback")
 async def auth_google(request: Request):

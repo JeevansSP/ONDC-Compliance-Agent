@@ -1,8 +1,8 @@
 from DatabaseHandler import *
 from fastapi import File
 from fastapi.responses import FileResponse
-from Ocr import extractTextAndTables
-from LLM import DocumentReformatChain
+# from Ocr import extractTextAndTables
+# from LLM import DocumentReformatChain
 import json
 from typing import List, Dict
 import os
@@ -249,3 +249,17 @@ def get_pdf_document(filepath: str):
     
     # Return the PDF file as a response
     return FileResponse(filepath, media_type="application/pdf")
+
+def update_user_points(user_id:str, points: int):
+    query = f"UPDATE {user_table} SET user_points = user_points + ? WHERE user_id = ?"
+    try: 
+        executeNonSelectQuery(query, values=(points,user_id))
+        return {"message": "User points updated successfully"}
+    except Exception as excep:
+        print(excep)
+        return {"error": "Failed to update user points"}
+    
+def get_user_ranking():
+    query = f"SELECT user_name FROM {user_table} ORDER BY user_points DESC"
+    return executeQueryAndReturnJson(query)
+    
