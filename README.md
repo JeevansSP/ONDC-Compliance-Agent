@@ -34,7 +34,7 @@ To get started with the Legal Document Processing Project, follow these steps:
 2. Install the required dependencies (including libraries for PDF support): `pip install -r requirements.txt` (Update requirements.txt to include PDF libraries)
 3. Configure your environment variables for authentication (openai and brave api keys).
 4. Run the FastAPI server: `uvicorn main:app --reload`
-
+ 
 Once the server is up and running, you can start ingesting, processing, and analyzing legal and regulatory documents (PDFs and images) through the provided API endpoints.
 
 ## Contributing 
